@@ -35,6 +35,9 @@ return packer.startup(function(use)
 
 	use("folke/tokyonight.nvim") -- preferred colorscheme
 
+	use("lukas-reineke/indent-blankline.nvim")
+
+	use("RRethy/vim-illuminate")
 	-- use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 	use({
 		"alexghergh/nvim-tmux-navigation",
@@ -54,6 +57,15 @@ return packer.startup(function(use)
 		end,
 	})
 
+	use({
+		"phaazon/hop.nvim",
+		branch = "v2", -- optional but strongly recommended
+		config = function()
+			-- you can configure Hop the way you like here; see :h hop-config
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+		end,
+	})
+
 	use("szw/vim-maximizer") -- maximizes and restores current window
 
 	-- essential plugins
@@ -69,6 +81,8 @@ return packer.startup(function(use)
 	-- vs-code like icons
 	use("nvim-tree/nvim-web-devicons")
 
+	use("simrat39/symbols-outline.nvim")
+
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
 
@@ -80,6 +94,17 @@ return packer.startup(function(use)
 	use("hrsh7th/nvim-cmp") -- completion plugin
 	use("hrsh7th/cmp-buffer") -- source for text in buffer
 	use("hrsh7th/cmp-path") -- source for file system paths
+
+	use({
+		"glepnir/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
+			require("dashboard").setup({
+				-- config
+			})
+		end,
+		requires = { "nvim-tree/nvim-web-devicons" },
+	})
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") -- snippet engine
@@ -120,9 +145,49 @@ return packer.startup(function(use)
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
+	use({
+		"rmagatti/goto-preview",
+		config = function()
+			require("goto-preview").setup({})
+		end,
+	})
 
 	-- git integration
-	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+	-- nvim v0.7.2
+	use({
+		"kdheepak/lazygit.nvim",
+		-- optional for floating window border decoration
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+	})
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "*",
+		config = function()
+			require("toggleterm").setup()
+		end,
+	})
+
+	use("folke/trouble.nvim")
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			require("which-key").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()
