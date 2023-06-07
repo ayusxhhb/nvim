@@ -67,19 +67,41 @@ keymap.set("n", "<leader>z", ":HopWord<CR>")
 keymap.set("n", "<leader>so", ":SymbolsOutline<CR>")
 
 -- keymaps for file previews
-vim.keymap.set("n", "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
-vim.keymap.set("n", "gpt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", { noremap = true })
-vim.keymap.set("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", { noremap = true })
-vim.keymap.set("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", { noremap = true })
-vim.keymap.set("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
+keymap.set("n", "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { noremap = true })
+keymap.set("n", "gpt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", { noremap = true })
+keymap.set("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", { noremap = true })
+keymap.set("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", { noremap = true })
+keymap.set("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { noremap = true })
 
 -- keymap for Terminal
 keymap.set("n", "<leader>tt", ":ToggleTerm direction=float<CR>")
 
 -- keymap for trouble toggle
 keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
-vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, noremap = true })
+keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", { silent = true, noremap = true })
+keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", { silent = true, noremap = true })
+keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { silent = true, noremap = true })
+keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
+keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", { silent = true, noremap = true })
+
+-- dap keymaps
+keymap.set("n", "<leader>dc", '<cmd>lua require"dap".continue()<CR>')
+keymap.set("n", "<leader>dsv", '<cmd>lua require"dap".step_over()<CR>')
+keymap.set("n", "<leader>dsi", '<cmd>lua require"dap".step_into()<CR>')
+keymap.set("n", "<leader>dso", '<cmd>lua require"dap".step_out()<CR>')
+keymap.set("n", "<leader>dtb", '<cmd>lua require"dap".toggle_breakpoint()<CR>')
+keymap.set("n", "<leader>dsbr", '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>')
+keymap.set(
+	"n",
+	"<leader>dsbm",
+	'<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>'
+)
+keymap.set("n", "<leader>dro", '<cmd>lua require"dap".repl.open()<CR>')
+keymap.set("n", "<leader>drl", '<cmd>lua require"dap".repl.run_last()<CR>')
+
+-- telescope-dap
+keymap.set("n", "<leader>dcc", '<cmd>lua require"telescope".extensions.dap.commands{}<CR>')
+keymap.set("n", "<leader>dco", '<cmd>lua require"telescope".extensions.dap.configurations{}<CR>')
+keymap.set("n", "<leader>dlb", '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>')
+keymap.set("n", "<leader>dv", '<cmd>lua require"telescope".extensions.dap.variables{}<CR>')
+keymap.set("n", "<leader>df", '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')

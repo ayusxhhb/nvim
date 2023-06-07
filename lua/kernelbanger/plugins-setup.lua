@@ -28,8 +28,18 @@ end
 
 -- add list of plugins to install
 return packer.startup(function(use)
+	use({ "mfussenegger/nvim-dap" })
+	use({ "nvim-telescope/telescope-dap.nvim" })
+	use({ "mfussenegger/nvim-dap-python" })
 	-- packer can manage itself
 	use("wbthomason/packer.nvim")
+
+	use({
+		"startup-nvim/startup.nvim",
+		config = function()
+			require("startup").setup({ theme = "evil" })
+		end,
+	})
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
@@ -37,7 +47,7 @@ return packer.startup(function(use)
 
 	use("lukas-reineke/indent-blankline.nvim")
 
-	use("RRethy/vim-illuminate")
+	-- use("RRethy/vim-illuminate")
 	-- use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 	use({
 		"alexghergh/nvim-tmux-navigation",
