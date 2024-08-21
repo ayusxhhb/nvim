@@ -7,6 +7,11 @@ local keymap = vim.keymap -- for conciseness
 -- General Keymaps
 ---------------------
 
+-- greatest keymap ever(by primeagen)
+keymap.set("v", "<leader>p", '"_dP')
+
+keymap.set("n", "<leader>pv", vim.cmd.exit)
+
 -- use jk to exit insert mode
 keymap.set("i", "jj", "<ESC>")
 
@@ -105,3 +110,7 @@ keymap.set("n", "<leader>dco", '<cmd>lua require"telescope".extensions.dap.confi
 keymap.set("n", "<leader>dlb", '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>')
 keymap.set("n", "<leader>dv", '<cmd>lua require"telescope".extensions.dap.variables{}<CR>')
 keymap.set("n", "<leader>df", '<cmd>lua require"telescope".extensions.dap.frames{}<CR>')
+
+-- moves the selected test even in multiline
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
