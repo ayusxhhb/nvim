@@ -1,2 +1,2 @@
-ctrl-v == vetical visual mode
+ctrl-v == vertical visual mode
 use ctrl-a with g or without to increament first hit value

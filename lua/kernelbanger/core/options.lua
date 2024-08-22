@@ -5,7 +5,7 @@ opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 opt.guicursor = ""
 -- disable mouse in neovim
-opt.mouse = nil
+-- opt.mouse = nil
 
 -- tabs & indentation
 opt.tabstop = 4 -- 4 spaces for tabs (prettier default)
@@ -21,7 +21,6 @@ opt.incsearch = true
 opt.scrolloff = 8
 opt.signcolumn = "yes"
 opt.updatetime = 50
-opt.colorcolumn = "80"
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
