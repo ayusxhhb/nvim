@@ -28,6 +28,19 @@ end
 
 -- add list of plugins to install
 return packer.startup(function(use)
+	use("lukas-reineke/indent-blankline.nvim")
+	use("romgrk/barbar.nvim")
+
+	use({
+		"xiyaowong/nvim-transparent",
+		config = function()
+			require("transparent").setup({
+				enable = true,
+			})
+		end,
+	})
+	-- Autocmd for nvim-tree
+	vim.cmd("autocmd Colorscheme * highlight NvimTreeNormal guibg=none guifg=#9da5b3")
 	use({ "mfussenegger/nvim-dap" })
 	use({ "nvim-telescope/telescope-dap.nvim" })
 	use({ "mfussenegger/nvim-dap-python" })
@@ -42,8 +55,10 @@ return packer.startup(function(use)
 	})
 
 	use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
+	use({ "ThePrimeagen/harpoon" }) -- idk man
 
-	use("folke/tokyonight.nvim") -- preferred colorscheme
+	-- use("folke/tokyonight.nvim") -- preferred colorscheme
+	use("catppuccin/nvim")
 
 	use("lukas-reineke/indent-blankline.nvim")
 
@@ -151,18 +166,18 @@ return packer.startup(function(use)
 	})
 
 	use("folke/trouble.nvim")
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-			require("which-key").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
+	-- use({
+	-- 	"folke/which-key.nvim",
+	-- 	config = function()
+	-- 		vim.o.timeout = true
+	-- 		vim.o.timeoutlen = 300
+	-- 		require("which-key").setup({
+	-- 			-- your configuration comes here
+	-- 			-- or leave it empty to use the default settings
+	-- 			-- refer to the configuration section below
+	-- 		})
+	-- 	end,
+	-- })
 	use({
 		"lewis6991/gitsigns.nvim",
 		config = function()
