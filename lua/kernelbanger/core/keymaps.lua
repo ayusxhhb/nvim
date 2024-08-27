@@ -12,14 +12,11 @@ keymap.set("v", "<leader>p", '"_dP')
 
 keymap.set("n", "<leader>pv", vim.cmd.exit)
 
--- use jk to exit insert mode
-keymap.set("i", "jj", "<ESC>")
-
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- delete single character without copying into register
-keymap.set("n", "x", '"_x')
+-- keymap.set("n", "x", '"_x')
 
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>") -- increment

@@ -3,8 +3,8 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Move to previous/next
-map("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
-map("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
+map("n", "<C-p>", "<Cmd>BufferPrevious<CR>", opts)
+map("n", "<C-n>", "<Cmd>BufferNext<CR>", opts)
 -- Re-order to previous/next
 map("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", opts)
 map("n", "<A->>", "<Cmd>BufferMoveNext<CR>", opts)
@@ -22,9 +22,10 @@ map("n", "<A-0>", "<Cmd>BufferLast<CR>", opts)
 -- Pin/unpin buffer
 map("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
 -- Close buffer
-map("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
+map("n", "<C-c>", "<Cmd>BufferClose<CR>", opts)
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
+opt.cursorline = true
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 opt.guicursor = ""
 -- disable mouse in neovim
@@ -39,7 +40,6 @@ opt.autoindent = true -- copy indent from current line when starting new one
 -- line wrapping
 opt.wrap = false -- disable line wrapping
 
-opt.hlsearch = false
 opt.incsearch = true
 opt.scrolloff = 8
 opt.signcolumn = "yes"
@@ -70,4 +70,4 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
-opt.iskeyword:append("-") -- consider string-string as whole word
+-- opt.iskeyword:append("-") -- consider string-string as whole word
